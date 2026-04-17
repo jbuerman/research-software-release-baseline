@@ -1,0 +1,68 @@
+# -------------------------
+# Build system (PEP 517)
+# -------------------------
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+# -------------------------
+# Project metadata (PEP 621)
+# -------------------------
+[project]
+name = "project-name"
+version = "0.1.0"
+description = "Example MINDS template project"
+readme = "README.md"
+license-files = [
+    "LICENSE",
+]
+authors = [
+    {name = "Jan Buermann", email = "j.buermann@soton.ac.uk"},
+    {name = "Tommy Tham", email = "C.K.Tham@soton.ac.uk"},
+]
+maintainers = [
+    {name = "Jan Buermann", email = "j.buermann@soton.ac.uk"},
+    {name = "Tommy Tham", email = "C.K.Tham@soton.ac.uk"},
+]
+requires-python = ">=3.10"
+dependencies = [
+    "dotenv>=0.9.9",
+    "loguru>=0.7.3",
+]
+
+## CLI entry point
+[project.scripts]
+cli = "project_name.cli:main"
+
+# -------------------------
+# Dependency groups (uv-specific)
+# -------------------------
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+]
+docs = [
+    "myst-parser>=4.0.1",
+    "sphinx>=7",
+    "sphinx-paramlinks>=0.6.0",
+    "sphinx-rtd-theme>=3.1.0",
+]
+
+# -------------------------
+# Tool configuration
+# -------------------------
+## Linting
+[tool.ruff]
+line-length = 100
+
+## Pytest
+[tool.pytest.ini_options]
+addopts = "-q"
+
+# -------------------------
+# Hatch build config
+# (required for src/ layout)
+# -------------------------
+[tool.hatch.build.targets.wheel]
+packages = ["src/project_name"]

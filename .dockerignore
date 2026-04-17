@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.dist/
+.build/
+.pytest_cache/
+
+# Sphinx
+docs/_build/
+docs/api/
+
+# VCS
+.git/
+
+# PyCharm
+.idea/
+
+# Apptainer
+project-name.sif
